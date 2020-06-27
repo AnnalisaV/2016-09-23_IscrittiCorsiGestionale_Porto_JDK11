@@ -1,6 +1,7 @@
 package it.polito.tdp.gestionale;
 
 import java.net.URL;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 import it.polito.tdp.gestionale.model.Model;
@@ -26,6 +27,14 @@ public class FXMLController {
     @FXML
     void doCorsiFrequentati(ActionEvent event) {
 
+    	txtResult.clear();
+    	
+    	model.creaGrafo();
+    	
+    	Map<Integer, Integer> frequenze= model.getFrequenza(); 
+    	for (Integer i : frequenze.keySet()) {
+    		txtResult.appendText("A "+i+" corsi sono iscritti "+frequenze.get(i)+" studenti\n");
+    	}
     }
 
     @FXML
